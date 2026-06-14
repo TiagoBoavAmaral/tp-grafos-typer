@@ -12,6 +12,12 @@ Ferramenta para minerar colaboração no repositório **[fastapi/typer](https://
 | `main.py` | Pipeline completo interativo e configuração de paths |
 | `documentacao/` | Pasta reservada para arquivos de texto e documentações |
 
+## Diagrama de Classes
+
+O sistema foi modelado utilizando UML, contemplando as classes responsáveis pela mineração de dados do GitHub, construção dos grafos e cálculo das métricas de redes.
+
+![Diagrama de Classes](Modelagem/Diagrama%20de%20Classe/Diagrama%20de%20Classe%20-%20Trabalho%20Grafos.png)
+
 ## Grafos gerados (modelagem)
 
 1. **Grafo 1** — comentários em issues/PRs
@@ -217,6 +223,16 @@ python3 demo_app.py
 - [ ] Indicar no relatório o que cada integrante fez
 - [ ] Vídeo (5–10 min) e apresentação oral (10–15 min)
 - [ ] Importar `output/grafo_integrado.graphml` no Gephi para figuras do relatório
+
+## Autores
+
+- Amanda Bicalho Silva
+- Karen Joilly Araújo Gregório de Almeida
+- Pedro Rodrigues Duarte
+- Tiago Boaventura Amaral
+
+Curso: Engenharia de Software
+Pontifícia Universidade Católica de Minas Gerais (PUC Minas)
 
 ## Observações
 
