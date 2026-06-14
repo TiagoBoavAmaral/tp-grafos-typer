@@ -217,13 +217,13 @@ python3 demo_app.py
 
 ## Entrega (checklist do PDF)
 
-- [ ] Código fonte (este repositório)
-- [ ] Relatório LaTeX (template SBC) — descrever escolha do Typer, modelagem, resultados e telas
-- [ ] PDF do relatório
-- [ ] `.zip` com código + `.tex` + PDF
-- [ ] Indicar no relatório o que cada integrante fez
-- [ ] Vídeo (5–10 min) e apresentação oral (10–15 min)
-- [ ] Importar `output/grafo_integrado.graphml` no Gephi para figuras do relatório
+- [x] Código fonte (este repositório)
+- [x] Relatório LaTeX (template SBC) — descrever escolha do Typer, modelagem, resultados e telas
+- [x] PDF do relatório
+- [x] `.zip` com código + `.tex` + PDF
+- [x] Indicar no relatório o que cada integrante fez
+- [x] Vídeo (5–10 min) e apresentação oral (10–15 min)
+- [x] Importar `output/grafo_integrado.graphml` no Gephi para figuras do relatório
 
 ## Resultados Obtidos
 
