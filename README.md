@@ -228,6 +228,12 @@ python3 demo_app.py
 
 Mineração realizada sobre o repositório fastapi/typer.
 
+### Visualização do Grafo Integrado
+
+A figura abaixo apresenta o grafo integrado gerado a partir das interações entre colaboradores do repositório fastapi/typer. Os vértices representam usuários e as arestas representam interações extraídas de comentários, fechamentos de issues, revisões e merges de pull requests.
+
+![Grafo Integrado](Modelagem/Grafos/grafo_integrado.png)
+
 ### Grafo Integrado
 
 - Vértices: 1129
@@ -253,6 +259,15 @@ PageRank:
 - csheppard
 - bcm0
 - tiangolo
+
+## Tecnologias Utilizadas
+
+- Python 3.12
+- GitHub REST API
+- Gephi
+- PlantUML
+- LaTeX (Template SBC)
+- unittest
 
 ## Autores
 
