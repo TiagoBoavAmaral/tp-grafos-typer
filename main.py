@@ -203,6 +203,7 @@ def interactive_menu(args) -> None:
         print("6 - Exportar grafo integrado (.graphml)")
         print("7 - Analisar centralidade e métricas")
         print("8 - Executar Pipeline Completo (Automático)")
+        print("9 - Carregar do cache (sem minerar)")
         print("0 - Sair")
         print("=" * 50)
         
@@ -289,6 +290,33 @@ def interactive_menu(args) -> None:
                 print("Pipeline concluído com sucesso!")
             except Exception as e:
                 print(f"Erro na execução do pipeline: {e}")
+                
+        elif opcao == "9":
+            # Carregar apenas do cache; não iniciar mineração se cache ausente/incompatível
+            try:
+                extractor = InteractionExtractor(workers=args.workers)
+                cache = out_dir / "interactions_cache.json"
+                cached = extractor.load_cache_if_valid(cache, args.repo, args.max_issues, args.max_pulls)
+                if cached is None:
+                    print(f"Cache ausente ou incompatível em {cache}; use a opção 1 para minerar ou verifique --repo/.env.")
+                else:
+                    interactions = cached
+                    print(f"Cache carregado: {len(interactions)} interações de {cache}")
+                    # Gerar grafos a partir do cache para permitir exportação/analise
+                    try:
+                        print("Construindo grafos a partir do cache...")
+                        graph_set = build_graphs_from_interactions(interactions)
+                        g = graph_set.integrated_graph
+                        print(
+                            f"  {len(graph_set.users)} usuários | "
+                            f"comentários: {graph_set.comments_graph.getEdgeCount()} arestas | "
+                            f"integrado: {g.getEdgeCount()} arestas"
+                        )
+                        print("Grafos gerados a partir do cache; agora é possível exportar (opções 3–6) e analisar (7).")
+                    except Exception as e:
+                        print(f"Erro ao construir grafos a partir do cache: {e}")
+            except Exception as e:
+                print(f"Erro ao carregar cache: {e}")
                 
         else:
             print("Opção inválida.")
