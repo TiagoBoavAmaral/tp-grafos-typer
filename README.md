@@ -11,6 +11,7 @@ Ferramenta para minerar colaboração no repositório **[fastapi/typer](https://
 | `Etapa 3/` | Métricas de rede, centralidades, densidade, comunidades |
 | `main.py` | Pipeline completo interativo e configuração de paths |
 | `documentacao/` | Pasta reservada para arquivos de texto e documentações |
+| `modelagem/` | Pasta reservada para arquivos de diagrama de classe e grafos |
 
 ## Diagrama de Classes
 
