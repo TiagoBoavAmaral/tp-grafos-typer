@@ -224,6 +224,36 @@ python3 demo_app.py
 - [ ] Vídeo (5–10 min) e apresentação oral (10–15 min)
 - [ ] Importar `output/grafo_integrado.graphml` no Gephi para figuras do relatório
 
+## Resultados Obtidos
+
+Mineração realizada sobre o repositório fastapi/typer.
+
+### Grafo Integrado
+
+- Vértices: 1129
+- Arestas: 1952
+- Densidade: 0.0015
+- Clustering: 0.0215
+- Assortatividade: -0.1695
+- Modularidade: 0.3794
+
+### Usuários mais centrais
+
+Degree Centrality:
+- tiangolo
+- github-actions[bot]
+- svlandeg
+
+Betweenness Centrality:
+- tiangolo
+- svlandeg
+- github-actions[bot]
+
+PageRank:
+- csheppard
+- bcm0
+- tiangolo
+
 ## Autores
 
 - Amanda Bicalho Silva
