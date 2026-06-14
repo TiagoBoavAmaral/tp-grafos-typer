@@ -6,12 +6,12 @@ Ferramenta para minerar colaboração no repositório **[fastapi/typer](https://
 
 | Pasta / arquivo | Conteúdo |
 | --------------- | --------- |
+| `Documentacao/` | Pasta reservada para arquivos de texto e documentações |
 | `Etapa 1/` | Coleta GitHub, mineração e construção dos 4 grafos |
 | `Etapa 2/` | `AbstractGraph`, matriz, lista, exportação Gephi e demo |
 | `Etapa 3/` | Métricas de rede, centralidades, densidade, comunidades |
+| `Modelagem/` | Pasta reservada para arquivos de diagrama de classe e grafos |
 | `main.py` | Pipeline completo interativo e configuração de paths |
-| `documentacao/` | Pasta reservada para arquivos de texto e documentações |
-| `modelagem/` | Pasta reservada para arquivos de diagrama de classe e grafos |
 
 ## Diagrama de Classes
 
