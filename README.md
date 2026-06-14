@@ -34,6 +34,7 @@ Cada usuário GitHub é um vértice; arestas direcionadas `origem → alvo`.
 
 1. git clone https://github.com/TiagoBoavAmaral/tp-grafos-typer.git
 2. cd tp-grafos-typer
+3. code .
 
 ### Configuração (`.env`)
 
