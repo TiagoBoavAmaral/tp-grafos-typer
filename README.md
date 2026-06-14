@@ -4,13 +4,13 @@ Ferramenta para minerar colaboração no repositório **[fastapi/typer](https://
 
 ## Estrutura
 
-| Pasta / arquivo | Conteúdo                                                    |
-| --------------- | ----------------------------------------------------------- |
-| `Etapa 1/`      | Coleta GitHub, mineração e construção dos 4 grafos          |
-| `Etapa 2/`      | `AbstractGraph`, matriz, lista, exportação Gephi e demo     |
-| `Etapa 3/`      | Métricas de rede, centralidades, densidade, comunidades     |
-| `main.py`       | Pipeline completo interativo e configuração de paths        |
-| `documentacao/` | Pasta reservada para arquivos de texto e documentações      |
+| Pasta / arquivo | Conteúdo |
+| --------------- | --------- |
+| `Etapa 1/` | Coleta GitHub, mineração e construção dos 4 grafos |
+| `Etapa 2/` | `AbstractGraph`, matriz, lista, exportação Gephi e demo |
+| `Etapa 3/` | Métricas de rede, centralidades, densidade, comunidades |
+| `main.py` | Pipeline completo interativo e configuração de paths |
+| `documentacao/` | Pasta reservada para arquivos de texto e documentações |
 
 ## Grafos gerados (modelagem)
 
@@ -26,17 +26,31 @@ Cada usuário GitHub é um vértice; arestas direcionadas `origem → alvo`.
 ### Configuração (`.env`)
 
 1. Copie o exemplo:
-   ```bash
-   copy .env.example .env
-   ```
+
+**Windows (CMD):**
+```cmd
+copy .env.example .env
+```
+
+**Windows (PowerShell):**
+```powershell
+Copy-Item .env.example .env
+```
+
+**Linux / macOS:**
+```bash
+cp .env.example .env
+```
+
 2. Edite `.env` e preencha pelo menos:
-   ```env
-   GITHUB_TOKEN=seu_token_aqui
-   REPO=fastapi/typer
-   OFFLINE=false
-   MAX_ISSUES=0
-   MAX_PULLS=0
-   ```
+
+```env
+GITHUB_TOKEN=seu_token_aqui
+REPO=fastapi/typer
+OFFLINE=false
+MAX_ISSUES=0
+MAX_PULLS=0
+```
 
 O `main.py` **carrega o `.env` automaticamente** ao iniciar. Você **não precisa** exportar o token no terminal se ele já estiver no `.env`.
 
@@ -44,55 +58,99 @@ O `main.py` **carrega o `.env` automaticamente** ao iniciar. Você **não precis
 
 Crie o token em: https://github.com/settings/tokens (escopo `public_repo` ou `repo`).
 
+---
+
 ### 1) Modo offline (sem token — para testar)
 
 No `.env`, use `OFFLINE=true`, ou rode:
 
+**Windows:**
 ```bash
 python main.py --offline
 ```
 
+**Linux / macOS:**
+```bash
+python3 main.py --offline
+```
+
 Gera em `output/` os `.graphml` e `metricas_integrado.json`.
+
+---
 
 ### 2) Mineração real do Typer
 
 Com o `.env` configurado, basta:
 
+**Windows:**
 ```bash
 python main.py
 ```
 
+**Linux / macOS:**
+```bash
+python3 main.py
+```
+
 O script usa os valores do `.env` (`GITHUB_TOKEN`, `REPO`, `MAX_ISSUES`, `MAX_PULLS`, etc.).
 
-**Alternativa:** definir o token só na sessão atual do terminal (sobrescreve o `.env`):
+**Alternativa:** definir o token só na sessão atual do terminal (sobrescreve o `.env`).
 
+**Windows PowerShell:**
 ```powershell
 $env:GITHUB_TOKEN = "seu_token_aqui"
 python main.py
 ```
 
+**Linux / macOS (bash/zsh):**
+```bash
+export GITHUB_TOKEN="seu_token_aqui"
+python3 main.py
+```
+
 Use `MAX_ISSUES=0` e `MAX_PULLS=0` no `.env` para minerar tudo. Em repositórios grandes, isso pode levar bastante tempo e consumir muitas chamadas de API.
+
+---
 
 ### 3) Demo da API de grafos (Etapa 2)
 
+**Windows:**
 ```bash
 python "Etapa 2/demo_app.py"
 ```
 
+**Linux / macOS:**
+```bash
+python3 "Etapa 2/demo_app.py"
+```
+
+---
+
 ### 4) Testes
 
-Como as pastas foram divididas por etapa, você precisa incluir elas no `PYTHONPATH` para rodar os testes. No PowerShell:
+Como as pastas foram divididas por etapa, você precisa incluir elas no `PYTHONPATH` para rodar os testes.
+
+#### Windows (PowerShell)
 
 ```powershell
 $env:PYTHONPATH = "Etapa 1;Etapa 2;Etapa 3"
+
 python -m unittest discover -s "Etapa 1/tests" -p "test*.py" -v
 python -m unittest discover -s "Etapa 2/tests" -p "test*.py" -v
 python -m unittest discover -s "Etapa 3/tests" -p "test*.py" -v
 ```
 
-## Plano de aceitação — Etapa 2 (API de grafos)
+#### Linux / macOS
 
-Cada requisito do enunciado é verificado pelos testes em `tests/test_graph_api.py` (executados para `AdjacencyMatrixGraph` e `AdjacencyListGraph`).
+```bash
+export PYTHONPATH="Etapa 1:Etapa 2:Etapa 3"
+
+python3 -m unittest discover -s "Etapa 1/tests" -p "test*.py" -v
+python3 -m unittest discover -s "Etapa 2/tests" -p "test*.py" -v
+python3 -m unittest discover -s "Etapa 3/tests" -p "test*.py" -v
+```
+
+## Plano de aceitação — Etapa 2 (API de grafos)
 
 | Requisito | Teste | Resultado esperado |
 | --------- | ----- | ------------------ |
@@ -113,7 +171,17 @@ Cada requisito do enunciado é verificado pelos testes em `tests/test_graph_api.
 | Construtor inválido | `test_invalid_num_vertices_constructor` | `ValueError` ou `TypeError` |
 | Tipos inválidos | `test_invalid_vertex_type_raises` | `TypeError` |
 
-Demonstração manual de todas as operações: `python demo_app.py`
+Demonstração manual de todas as operações:
+
+**Windows:**
+```bash
+python demo_app.py
+```
+
+**Linux / macOS:**
+```bash
+python3 demo_app.py
+```
 
 ## Plano de aceitação — Etapa 1 (mineração)
 
@@ -148,11 +216,11 @@ Demonstração manual de todas as operações: `python demo_app.py`
 - [ ] `.zip` com código + `.tex` + PDF
 - [ ] Indicar no relatório o que cada integrante fez
 - [ ] Vídeo (5–10 min) e apresentação oral (10–15 min)
-- [ ] Importar `output/grafo_integrado.graphml` no **Gephi** para figuras do relatório
+- [ ] Importar `output/grafo_integrado.graphml` no Gephi para figuras do relatório
 
 ## Observações
 
 - Não usa `networkX` nem bibliotecas prontas de grafos.
-- Com `GITHUB_TOKEN` no `.env`, rode apenas `python main.py`.
-- Sem token, use `OFFLINE=true` no `.env` ou `python main.py --offline`.
+- Com `GITHUB_TOKEN` no `.env`, rode apenas `python main.py` (Windows) ou `python3 main.py` (Linux/macOS).
+- Sem token, use `OFFLINE=true` no `.env` ou `python main.py --offline` (Windows) / `python3 main.py --offline` (Linux/macOS).
 - Resultados reutilizáveis ficam em cache: `output/interactions_cache.json`.
